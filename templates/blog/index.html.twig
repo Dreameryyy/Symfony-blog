@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Blog List</h1>
+
+    <a href="{{ path('app_blog_new') }}">Create new blog post</a>
+
+    <ul>
+        {% for blog in pagination.items %}
+            <li>
+                <a href="{{ path('app_blog_show', {id: blog.id}) }}">{{ blog.title }}</a>
+                <p>{{ blog.description }}</p> 
+                <p>{{ blog.createdAt|date('Y-m-d H:i') }}</p>
+                <p>{{ blog.author }} ({{ blog.email }})</p>
+                <p>Number of Comments: {{ blog.getCommentCount() }}</p>
+            </li>
+        {% else %}
+            <li>No blogs found</li>
+        {% endfor %}
+    </ul>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}
