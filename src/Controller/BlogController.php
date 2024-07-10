@@ -35,7 +35,7 @@ class BlogController extends AbstractController
         $pagination = $paginator->paginate(
             $query, // Query to paginate
             $request->query->getInt('page', 1), // Current page number, defaulting to 1
-            10 // Number of items per page
+            4 // Number of items per page
         );
 
         // Render the view with the paginated blogs
@@ -89,7 +89,7 @@ class BlogController extends AbstractController
         $pagination = $paginator->paginate(
             $commentsQuery,
             $request->query->getInt('page', 1),
-            5 // Number of comments per page
+            3 // Number of comments per page
         );
 
         // Render the view with the blog, its paginated comments, and the comment form
